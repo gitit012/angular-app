@@ -21,6 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -31,6 +32,7 @@ yarn-error.log
 # Angular Cache
 /.angular/cache
 /FE/.angular/cache
+/FE/.angular/cache/19.2.4
 
 # Build-related files
 *.tsbuildinfo
