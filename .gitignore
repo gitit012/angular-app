@@ -1,5 +1,3 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
 # Compiled output
 /dist
 /tmp
@@ -30,8 +28,14 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# Angular Cache
 /.angular/cache
+/FE/.angular/cache
+
+# Build-related files
+*.tsbuildinfo
+
+# Miscellaneous
 .sass-cache/
 /connect.lock
 /coverage
@@ -42,3 +46,19 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment and Config Files
+/FE/environments/*.ts
+/BE/db/*.sqlite
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Ignore specific Angular cache files
+FE/.angular/cache/**/*.js
+FE/.angular/cache/**/*.js.map
+FE/.angular/cache/**/_metadata.json
+
+# Ignore any unnecessary .http example files
+BE/example.http
