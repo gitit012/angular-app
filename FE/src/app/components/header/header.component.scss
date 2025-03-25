@@ -1,0 +1,82 @@
+@use "sass:color";
+
+$primary-color: #007bff;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: $secondary-color;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $primary-color;
+  color: white;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .search-bar {
+    display: flex;
+    input {
+      padding: 8px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      width: 400px;
+    }
+    button {
+      background-color: color.adjust(#0056b3, $lightness: -10%);
+      border: none;
+      padding: 8px;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+  }
+
+  .profile-link {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.category-menu {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: white;
+  
+    ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    li {
+      margin: 0 15px;
+    }
+  
+    a {
+      text-decoration: none;
+      color: $text-color;
+      font-weight: 500;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+  

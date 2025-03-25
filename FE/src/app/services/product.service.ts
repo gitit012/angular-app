@@ -21,7 +21,7 @@ export class ProductService {
     return this.http.post(environment.apiUrl + '/product', model)
   }
   updateProduct(id:string,model:Product){
-    return this.http.post(environment.apiUrl + '/product/' +id, model)
+    return this.http.put(environment.apiUrl + '/product/' +id, model)
   }
   deleteProduct(id:string){
     return this.http.delete(environment.apiUrl + '/product/' +id)

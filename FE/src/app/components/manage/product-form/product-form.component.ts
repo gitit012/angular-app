@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select'
 import { Brand } from '../../../types/brand';
 import { Category } from '../../../types/category';
 import { CategoryService } from '../../../services/category.service';
@@ -10,10 +10,11 @@ import { BrandService } from '../../../services/brand.service';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../types/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatCheckbox } from '@angular/material/checkbox'
 
 @Component({
   selector: 'app-product-form',
-  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule,MatSelectModule],
+  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule,MatCheckbox],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
@@ -28,6 +29,8 @@ export class ProductFormComponent {
     images: this.formBuilder.array([]),
     categoryId: [null,[Validators.required]],
     brandId: [null,[Validators.required]],
+    isFeatured:[false],
+    newItem:[false]
 
   })
   categoryService = inject(CategoryService)
@@ -67,13 +70,18 @@ export class ProductFormComponent {
       this.router.navigateByUrl('/admin/products')
     })
   }
-  updateProduct(){
-    let value = this.productForm.value
-    console.log(value)
-    this.productService.updateProduct(this.id, value as any ).subscribe(result=>{
-      alert('Product Updated')
-      this.router.navigateByUrl('/admin/products')
-    })
+  updateProduct() {
+    const value = this.productForm.value;
+    this.productService.updateProduct(this.id, value as any).subscribe({
+      next: (result) => {
+        alert('Product Updated');
+        this.router.navigateByUrl('/admin/products');
+      },
+      error: (error) => {
+        console.error('Update Error:', error);
+        alert('Failed to update product. Check console for details.');
+      }
+    });
   }
   addImage(){
     this.images.push(this.formBuilder.control(null));

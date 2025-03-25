@@ -6,5 +6,7 @@ export interface Product{
     Price: Number,
     discount: Number,
     images: string[]
-    categoryId: string
+    categoryId: string,
+    isFeatured: boolean,
+    newItem: boolean
 }

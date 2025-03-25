@@ -7,7 +7,9 @@ const productSchema = new mongoose.Schema({
     discount: Number,
     images: Array(String),
     categoryId: { type: mongoose.Schema.Types.ObjectId, ref:'categories'},
-    brandId: { type: mongoose.Schema.Types.ObjectId, ref:'brands'}
+    brandId: { type: mongoose.Schema.Types.ObjectId, ref:'brands'},
+    isFeatured: Boolean,
+    newItem: Boolean
 
 });
 const Product = mongoose.model('products', productSchema);
