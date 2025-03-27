@@ -3,8 +3,8 @@ export interface Product{
     name: String,
     shortDescription: String,
     description: String,
-    price: Number,
-    discount: Number,
+    price: number,
+    discount: number,
     images: string[]
     categoryId: string,
     isFeatured: boolean,

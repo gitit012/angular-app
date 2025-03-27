@@ -1,8 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+swiper-container {
+  --swiper-navigation-color: #3b82f6;
+  --swiper-pagination-color: #3b82f6;
+  --swiper-pagination-bottom: 0;
+  padding-bottom: 2rem;
+
+  swiper-slide {
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    height: auto !important;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+}
+
+.category-carousel {
+  .group:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+  }
+  
+  img {
+    transition: transform 0.3s ease-in-out;
+  }
+}
