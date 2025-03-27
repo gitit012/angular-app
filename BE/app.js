@@ -7,6 +7,7 @@ const categoryRoutes = require('./routes/categories')
 const brandRoutes = require('./routes/brand')
 const productRoutes = require('./routes/product')
 const customerRoutes = require('./routes/customer')
+const authRoutes = require('./routes/auth')
 
 
 app.use(cors())
@@ -18,7 +19,7 @@ app.use('/category', categoryRoutes);
 app.use('/brand', brandRoutes)
 app.use('/product', productRoutes)
 app.use('/customer', customerRoutes)
-
+app.use('/auth', authRoutes)
 
 async function connectDb(){
     await mongoose.connect("mongodb://localhost:27017",{
