@@ -5,13 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import { RouterLink } from '@angular/router';
 
 register();
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatButtonModule, ProductCardComponent],
+  imports: [MatButtonModule, ProductCardComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
