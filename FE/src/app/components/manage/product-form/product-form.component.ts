@@ -30,7 +30,7 @@ export class ProductFormComponent {
     categoryId: [null,[Validators.required]],
     brandId: [null,[Validators.required]],
     isFeatured:[false],
-    newItem:[false]
+    isNewProduct:[false]
 
   })
   categoryService = inject(CategoryService)
