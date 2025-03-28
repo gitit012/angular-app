@@ -20,4 +20,22 @@ export class AuthService {
       email,password
     })
   }
+  get isLoggedIn(){
+    let token = localStorage.getItem("token");
+    if(token){
+      return true
+    }
+    return false
+  }
+  get userName(){
+    let userData = localStorage.getItem("user");
+    if(userData){
+      return JSON.parse(userData).name;
+    }
+    return null
+  }
+  logout(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+  }
 }
