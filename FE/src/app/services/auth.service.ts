@@ -27,6 +27,13 @@ export class AuthService {
     }
     return false
   }
+  get isAdmin(){
+    let userData = localStorage.getItem("user");
+    if(userData){
+      return JSON.parse(userData).isAdmin;
+    }
+    return false
+  }
   get userName(){
     let userData = localStorage.getItem("user");
     if(userData){

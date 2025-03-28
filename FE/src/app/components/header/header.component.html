@@ -8,8 +8,13 @@
         <input type="text" placeholder="Search products..." (keyup.enter)="onSearch($event)" />
         <button>🔍</button>
       </div>
-      <div>  
-        <a href="#" class="profile-link">{{authService.userName}}</a>
+      <div>
+        
+        @if (authService.isAdmin) {
+          <a routerLink="/admin">{{authService.userName}}</a>
+        }@else {
+        <a routerLink="/profile" class="profile-link">{{authService.userName}}</a>
+        }
         @if (authService.isLoggedIn) {
           <a class="profile-link cursor-pointer ml-2" (click)="logout()"  >Logout</a>
         }@else {
