@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Category } from '../../types/category';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { AsyncPipe } from '@angular/common';
 import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink,AsyncPipe],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

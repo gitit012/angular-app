@@ -23,7 +23,7 @@ authService = inject(AuthService)
 router=inject(Router)
 register(){
   let value = this.registerForm.value;
-  this.authService.register(value.name!,value.email!,value.password!).subscribe(result=>{
+  this.authService.register(value.name!,value.email!,value.password!).subscribe((result:any)=>{
     alert('Registration Successful')
   this.router.navigateByUrl('/login')
   })

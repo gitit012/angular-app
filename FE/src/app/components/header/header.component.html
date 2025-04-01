@@ -1,36 +1,37 @@
 <header class="header">
-    <!-- First Line -->
-    <div class="top-bar">
-      <div class="logo hover:text-blue-900 transition-colors duration-150" routerLink="/">
-        <span>Shop Name</span>
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search products..." (keyup.enter)="onSearch($event)" />
-        <button>🔍</button>
-      </div>
-      <div>
-        
-        @if (authService.isAdmin) {
-          <a routerLink="/admin">{{authService.userName}}</a>
-        }@else {
-        <a routerLink="/profile" class="profile-link">{{authService.userName}}</a>
-        }
-        @if (authService.isLoggedIn) {
-          <a class="profile-link cursor-pointer ml-2" (click)="logout()"  >Logout</a>
-        }@else {
-          <a class="profile-link cursor-pointer ml-2" routerLink="/login"  >Login</a>
-          <a class="profile-link cursor-pointer ml-2" routerLink="/register"  >Register</a>
-        }
-      </div>
+  <!-- First Line -->
+  <div class="top-bar">
+    <div class="logo hover:text-blue-900 transition-colors duration-150" routerLink="/">
+      <span>Shop Name</span>
     </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search products..." (keyup.enter)="onSearch($event)" />
+      <button>🔍</button>
+    </div>
+    <div>
 
-    <!-- Second Line -->
-    @if (authService.isLoggedIn) {
-      <nav class="category-menu">
-        <ul>@for (category of categoryList; track $index) {
-            <li (click)="searchCategory(category._id!)" ><a>{{category.name}}</a></li>    
-        }
-        </ul>
-    </nav>
-    }
-  </header>
+      @if (authService.isAdmin$ | async) {
+        <a routerLink="/admin">{{ authService.userName$ | async }}</a>
+      } @else {
+        <a routerLink="/profile" class="profile-link">{{ authService.userName$ | async }}</a>
+      }
+
+      @if (authService.isLoggedIn$ | async) {
+        <a class="profile-link cursor-pointer ml-2" (click)="logout()"  >Logout</a>
+      } @else {
+        <a class="profile-link cursor-pointer ml-2" routerLink="/login"  >Login</a>
+        <a class="profile-link cursor-pointer ml-2" routerLink="/register"  >Register</a>
+      }
+    </div>
+  </div>
+
+  <!-- Second Line -->
+  @if (authService.isLoggedIn$ | async) {
+    <nav class="category-menu">
+      <ul>@for (category of categoryList; track $index) {
+          <li (click)="searchCategory(category._id!)" ><a>{{category.name}}</a></li>
+      }
+      </ul>
+  </nav>
+  }
+</header>
