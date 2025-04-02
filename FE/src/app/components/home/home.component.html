@@ -13,7 +13,7 @@
               />
               <div class="mt-2">
                 <p class="text-sm font-semibold line-clamp-1">{{ product.name }}</p>
-                <p class="text-xs text-gray-600">${{ product.price }}</p>
+                <p class="text-xs text-gray-600">Cost: {{ product.price }}</p>
                 @if(product.discount > 0) {
                   <span class="text-red-500 text-xs">Save {{ product.discount }}%</span>
                 }
@@ -37,7 +37,7 @@
               />
               <div class="mt-2">
                 <p class="text-sm font-semibold line-clamp-1">{{ product.name }}</p>
-                <p class="text-xs text-gray-600">${{ product.price }}</p>
+                <p class="text-xs text-gray-600">Cost: {{ product.price }}</p>
                 @if(product.isNewProduct) {
                   <span class="text-green-500 text-xs">New!</span>
                 }
