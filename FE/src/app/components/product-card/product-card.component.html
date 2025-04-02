@@ -1,5 +1,5 @@
 <div class="border border-gray-300 rounded-lg overflow-hidden
- shadow-lg font-sans h-full flex flex-col" [routerLink]="'products/'+ product._id" >
+ shadow-lg font-sans h-full flex flex-col" [routerLink]="'/products/'+ product._id" >
     <img 
       [src]="product.images[0]" 
       alt="Product Image" 
@@ -11,7 +11,11 @@
         {{ product.shortDescription }}
       </p>
       <div class="flex justify-between items-center mt-auto">
-        <span class="text-black text-sm font-semibold">Cost: {{ product.price }}</span>
+        <div class="flex flex-col">
+          <span class="text-black text-sm font-semibold">Cost: {{ sellingPrice }}</span>
+          <span class="text-gray-400 line-through text-xs font-semibold">MRP:{{ product.price }}</span>
+          <span class="text-red-400 text-xs font-semibold">({{ product.discount }}%off)</span>
+        </div>
         <button mat-flat-button color="primary" class="!text-xs">
           Add to Cart
         </button>

@@ -12,4 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductCardComponent {
   @Input() product!:Product;
+  
+  get sellingPrice(){
+    const discountedPrice =  this.product.price - (this.product.price*Math.abs(this.product.discount/100))
+    return new Intl.NumberFormat('en-In').format(Math.ceil(discountedPrice)); 
+  }
 }

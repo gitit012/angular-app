@@ -1,1 +1,65 @@
-<p>product-detail works!</p>
+@if(product){<div class="max-w-6xl mx-auto p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Product Gallery -->
+        <div>
+            <img id="mainImage" class="w-full h-96 object-cover rounded-lg shadow" [src]="mainImage" alt="Product Image">
+            <div class="flex gap-2 mt-4" >
+                @for (url of product.images; track $index) {
+                <img (click)="changeImage(url)" class="w-20 h-20 object-cover cursor-pointer border rounded" [src]="url" alt="Thumbnail">
+                }
+            </div>
+        </div>
+        
+        <!-- Product Info -->
+        <div>
+            <h2 class="text-3xl font-bold">{{ product.name }}</h2>
+            <p class="text-gray-600 mt-2">{{ product.shortDescription }}</p>
+            <div>
+                <p class="font-semibold mt-2 text-gray-600">
+                    <span class="line-through">Cost: {{ product.price }}</span>
+                </p>
+                <p class=" mt-2 text-red-400 ">Discount: {{product.discount}}%</p>
+                <p class="text-xl  font-semibold mt-4 mb-4">Discounted Price: {{sellingPrice}}</p>
+            </div>
+            <button mat-flat-button >Add to Cart</button>
+        </div>
+    </div>
+    
+    <!-- Product Details -->
+    <div class="mt-10">
+        <h3 class="text-2xl font-semibold">Product Details</h3>
+        <pre>{{product.description}}</pre>
+    </div>
+
+    <!-- Similar Products -->
+     @if (similarProducts.length) {
+        <div class="mt-14"> 
+            <h4 class="text-2xl  font-bold">Similar Products</h4>
+            <div class=" mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
+            @for (product of similarProducts; track $index) {
+                <div class="shadow">
+                <app-product-card [product]="product"></app-product-card>
+                </div>
+            }
+        </div>
+      </div>
+     }
+    <!-- Product Reviews -->
+    <div class="mt-10">
+        <h3 class="text-2xl font-semibold">Customer Reviews</h3>
+        <div class="mt-4">
+            <div class="border-b pb-4 mb-4">
+                <p class="font-semibold">John Doe</p>
+                <p class="text-yellow-500">★★★★★</p>
+                <p class="text-gray-600">Great product! Highly recommend.</p>
+            </div>
+            <div class="border-b pb-4 mb-4">
+                <p class="font-semibold">Jane Smith</p>
+                <p class="text-yellow-500">★★★★☆</p>
+                <p class="text-gray-600">Good quality, but shipping was slow.</p>
+            </div>
+        </div>
+    </div>
+</div>}@else {
+    <h2>Loading</h2>
+}

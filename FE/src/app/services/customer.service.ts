@@ -40,4 +40,9 @@ export class CustomerService {
     {
     return this.http.get<Product[]>(environment.apiUrl+`/customer/products?searchTerm=${searchTerm}&categoryId=${categoryId}&sortBy=${sortBy}&brandId=${brandId}&page=${page}&pageSize=${pageSize}&sortOrder=${sortOrder}`) 
   }
+  getProductById(id: string) {
+    const url = `${environment.apiUrl}/customer/products/${id}`;
+    console.log('Fetching product by ID from URL:', url);
+    return this.http.get<Product>(url);
+  }
 }
