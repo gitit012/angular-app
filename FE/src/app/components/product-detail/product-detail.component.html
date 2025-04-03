@@ -21,7 +21,16 @@
                 <p class=" mt-2 text-red-400 ">Discount: {{product.discount}}%</p>
                 <p class="text-xl  font-semibold mt-4 mb-4">Discounted Price: {{sellingPrice}}</p>
             </div>
-            <button mat-flat-button >Add to Cart</button>
+            <div class="flex pl-2 gap-4 mt-12">
+                <button mat-raised-button (click)="$event.stopPropagation(); addToWishlist(product)">
+                  <mat-icon class="text-red-500">{{ isInWishlist(product) ? 'favorite' : 'favorite_border' }}</mat-icon>
+                  {{ isInWishlist(product) ? 'Remove From Wishlist' : 'Add To Wishlist' }}
+                </button>
+                <button mat-raised-button>
+                  <mat-icon>add_shopping_cart</mat-icon> Add to Cart
+                </button>
+              </div>
+              
         </div>
     </div>
     

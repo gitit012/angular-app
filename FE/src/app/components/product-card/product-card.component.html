@@ -1,14 +1,15 @@
 <div class="border border-gray-300 rounded-lg overflow-hidden
- shadow-lg font-sans h-full flex flex-col" [routerLink]="'/products/'+ product._id" >
+ shadow-lg font-sans h-full flex flex-col"  >
     <img 
       [src]="product.images[0]" 
       alt="Product Image" 
-      class="w-full h-32 object-cover"
+      class="w-full h-32 object-cover transition-transform duration-300 hover:scale-105"
+      [routerLink]="'/products/'+ product._id"
     />
-    <div class="p-2 flex flex-col flex-grow">
-      <h2 class="text-lg font-semibold mb-1">{{ product.name }}</h2>
-      <p class="text-gray-600 text-xs mb-2 line-clamp-2">
-        {{ product.shortDescription }}
+    <div class="p-2 flex flex-col flex-grow transition-shadow duration-200 hover:shadow-md" [routerLink]="'/products/'+ product._id ">
+      <h2 class="text-lg font-semibold mb-1 transition-colors duration-200 hover:text-blue-500">{{ product.name }}</h2>
+      <p class="text-gray-600 text-xs mb-2 line-clamp-2 transition-colors duration-200 hover:text-gray-400">
+            {{ product.shortDescription }}
       </p>
       <div class="flex justify-between items-center mt-auto">
         <div class="flex flex-col">
@@ -16,9 +17,20 @@
           <span class="text-gray-400 line-through text-xs font-semibold">MRP:{{ product.price }}</span>
           <span class="text-red-400 text-xs font-semibold">({{ product.discount }}%off)</span>
         </div>
-        <button mat-flat-button color="primary" class="!text-xs">
-          Add to Cart
-        </button>
+        <div class="flex items-center gap-2">
+          <button mat-mini-fab (click)="addToWishlist(product); $event.stopPropagation()">
+            @if(isInWishlist(product)){
+             <mat-icon class="text-red-500" >favorite</mat-icon>
+            }@else {
+             <mat-icon >favorite_border</mat-icon>
+            }
+         </button>
+         <button mat-mini-fab >
+           <mat-icon>add_shopping_cart</mat-icon>
+           <!-- <mat-icon>remove_shopping_cart</mat-icon> -->
+         </button>
+        </div>
+
       </div>
     </div>
   </div>

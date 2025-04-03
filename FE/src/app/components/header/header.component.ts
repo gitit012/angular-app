@@ -6,6 +6,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { CustomerService } from '../../services/customer.service';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ import { Subscription } from 'rxjs';
     RouterLink,
     AsyncPipe,
     FormsModule,
-    CommonModule 
+    CommonModule,
+    MatIconModule
    ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
