@@ -26,9 +26,15 @@
                   <mat-icon class="text-red-500">{{ isInWishlist(product) ? 'favorite' : 'favorite_border' }}</mat-icon>
                   {{ isInWishlist(product) ? 'Remove From Wishlist' : 'Add To Wishlist' }}
                 </button>
-                <button mat-raised-button>
-                  <mat-icon>add_shopping_cart</mat-icon> Add to Cart
-                </button>
+                @if (isProductInCart(product._id!)) {
+                    <button mat-raised-button (click)="addToCart(product)" >
+                        <mat-icon>remove_shopping_cart</mat-icon>Remove from Cart
+                      </button>
+                }@else {
+                    <button mat-raised-button (click)="addToCart(product)" >
+                        <mat-icon>add_shopping_cart</mat-icon>Add to Cart
+                      </button>
+                }
               </div>
               
         </div>

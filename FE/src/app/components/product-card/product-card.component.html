@@ -25,9 +25,12 @@
              <mat-icon >favorite_border</mat-icon>
             }
          </button>
-         <button mat-mini-fab >
-           <mat-icon>add_shopping_cart</mat-icon>
-           <!-- <mat-icon>remove_shopping_cart</mat-icon> -->
+         <button mat-mini-fab (click)="addToCart(product); $event.stopPropagation()" >
+          @if (isProductInCart(product._id!)) {
+           <mat-icon>remove_shopping_cart</mat-icon>
+          }@else {
+            <mat-icon>add_shopping_cart</mat-icon>
+          }
          </button>
         </div>
 

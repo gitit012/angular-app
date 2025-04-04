@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { WishlistService } from '../../services/wishlist.service';
 import {MatIconModule} from '@angular/material/icon';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -68,5 +69,25 @@ isInWishlist(product:Product){
   if(isExists) return true;
   else return false;    
 }
+  cartService = inject(CartService)
 
+  addToCart(product:Product){
+    console.log()
+    if(!this.isProductInCart(product._id!)){
+      this.cartService.addToCart(product._id!,1).subscribe(()=>{
+        this.cartService.init()
+      })
+    }else{
+      this.cartService.removeFromCart(product._id!).subscribe(()=>{
+        this.cartService.init()
+      })
+    }
+  }
+  isProductInCart(productId:string){
+    if(this.cartService.items.find(x=>x.product._id==productId)){
+      return true;
+    }else{
+      return false
+    }
+  }
 }

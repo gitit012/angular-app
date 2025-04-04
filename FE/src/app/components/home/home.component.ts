@@ -7,6 +7,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { RouterLink } from '@angular/router';
 import { WishlistService } from '../../services/wishlist.service';
+import { CartService } from '../../services/cart.service';
 
 register();
 
@@ -24,6 +25,8 @@ export class HomeComponent implements AfterViewInit {
   featuredProducts: Product[] = [];
   private swiperInitialized = false;
   wishlistService = inject(WishlistService)
+  cartService = inject(CartService)
+
 
   ngOnInit() {
     this.customerService.getFeaturedProducts().subscribe(result => {
@@ -33,6 +36,7 @@ export class HomeComponent implements AfterViewInit {
       this.newProducts = result;
     });
     this.wishlistService.init()
+    this.cartService.init()
   }
 
   ngAfterViewInit() {

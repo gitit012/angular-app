@@ -25,10 +25,17 @@
         <a class="profile-link cursor-pointer relative group" routerLink="/wishlists">
           <mat-icon class="text-red-500">favorite</mat-icon>
           <span 
-            class="absolute left-1/2 -translate-x-1/2 top-full mt-1 bg-gray-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            Wishlist
-          </span>
-        </a>
+          class="absolute left-1/2 -translate-x-1/2 top-full mt-1 bg-gray-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          Wishlist
+        </span>
+      </a>
+      <a class="profile-link cursor-pointer relative group" routerLink="/cart">
+      <mat-icon class="text-white">shopping_cart</mat-icon>
+        <span 
+          class="absolute left-1/2 -translate-x-1/2 top-full mt-1 bg-gray-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          ShoppingCart
+        </span>
+      </a>
         
         
         <a class="profile-link cursor-pointer" (click)="logout()">Logout</a>
