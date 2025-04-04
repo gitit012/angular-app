@@ -22,13 +22,24 @@ export class ShoppingCartComponent {
   }
 
   getTotal() {
-    return this.cartService.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    const total = this.cartService.items.reduce((sum, item) => 
+      sum + this.getDiscountedPrice(item.product) * item.quantity, 0);
+    return new Intl.NumberFormat('en-IN').format(total);
+  }
+
+  private getDiscountedPrice(product: CartItem['product']): number {
+    const discount = product.discount ?? 0;
+    const discountedPrice = product.price - (product.price * Math.abs(discount / 100));
+    return Math.ceil(discountedPrice);
   }
 
   getFormattedSellingPrice(product: CartItem['product']): string {
-    const discount = product.discount ?? 0;
-    const discountedPrice = product.price - (product.price * Math.abs(discount / 100));
-    return new Intl.NumberFormat('en-IN').format(Math.ceil(discountedPrice));
+    return new Intl.NumberFormat('en-IN').format(this.getDiscountedPrice(product));
+  }
+
+  getFormattedItemTotal(item: CartItem): string {
+    const total = this.getDiscountedPrice(item.product) * item.quantity;
+    return new Intl.NumberFormat('en-IN').format(total);
   }
 
   updateQuantity(productId: string, newQuantity: number) {
